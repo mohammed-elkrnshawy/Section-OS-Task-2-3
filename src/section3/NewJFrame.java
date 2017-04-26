@@ -54,13 +54,18 @@ Statement sm;
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+        });
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
             }
         });
 
@@ -87,15 +92,17 @@ Statement sm;
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Name", "Phone", "Email"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Delete");
@@ -105,7 +112,8 @@ Statement sm;
             }
         });
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Message");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButton3.setText("Update");
@@ -115,14 +123,8 @@ Statement sm;
             }
         });
 
-        jButton4.setText("Select");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("jLabel5");
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Valid Email");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,44 +132,36 @@ Statement sm;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jButton1)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton2)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(157, 157, 157)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(157, 157, 157)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField1)
+                                    .addComponent(jTextField2)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jButton1)
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton2)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton3))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(209, 209, 209))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,24 +185,32 @@ Statement sm;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel5)
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(jButton2)
                             .addComponent(jButton3)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //this method to clear jtextfiled
+    public void clear()
+    {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jLabel5.setText("Message");
+        jLabel6.setText("Valid Email");
+    }
     //this method to reflesh table
     public void Ref()
     {
@@ -238,7 +240,8 @@ Statement sm;
            jTable1.setModel(m);
             
          
-                       jTextField1.enable(true);
+                       jTextField1.enable(false);
+                       clear();
 
         }
         catch(Exception ex)
@@ -258,6 +261,8 @@ Statement sm;
         // TODO add your handling code here:
         
         
+        //this method to insert in database
+        
         
         try{
     
@@ -265,7 +270,7 @@ Statement sm;
     sm=connction.createStatement();
     
     
-    if(jTextField1.getText().equals("")||jTextField2.getText().equals("")||jTextField3.getText().equals("")||jTextField4.getText().equals("")){
+    if(jTextField2.getText().equals("")||jTextField3.getText().equals("")||jTextField4.getText().equals("")){
         jLabel5.setText("error");
     }
     else if(!jTextField4.getText().contains(".com")&&!jTextField4.getText().contains("@"))
@@ -275,7 +280,7 @@ Statement sm;
         else
     {
     
-    String q="INSERT INTO `stu`(`id`, `name`, `phone`, `email`) VALUES ('"+Integer.parseInt(jTextField1.getText())+"','"+jTextField2.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"')";
+    String q="INSERT INTO `stu`(`name`, `phone`, `email`) VALUES ('"+jTextField2.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"')";
     sm.execute(q);
     jLabel5.setText("Done Insert ");
     
@@ -296,15 +301,17 @@ catch(Exception ex)
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
+        //this to delete by id
         
          try{
             connction=DriverManager.getConnection(server, user, password);
             Statement sm=connction.createStatement();
             String x=jTable1.getModel().getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn()).toString();
             String q="DELETE FROM `stu` WHERE id= '"+x+"' ";
-            sm.execute(q);
+            sm.execute(q); 
             jLabel5.setText("Done Delete");
              Ref();
+             jLabel1.enable(true);
         }
         catch(Exception ex)
         {
@@ -316,6 +323,9 @@ catch(Exception ex)
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+
+        //this to update by id
+        
         
         try{
             connction=DriverManager.getConnection(server, user, password);
@@ -335,8 +345,28 @@ catch(Exception ex)
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
         // TODO add your handling code here:
+        //validate emial
+        String text=jTextField4.getText();
+        
+        if(text.contains(".com")&&text.contains("@"))
+        {
+            text=text+" ";
+            jLabel6.setText("True email");
+        }
+        else
+        {
+            text=text+" ";
+             jLabel6.setText("False email");
+        }
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+        //select row to show it in fileds
+        
+        
         try{
             String id="";
             String name="";
@@ -373,25 +403,18 @@ catch(Exception ex)
         catch(Exception ed)
         {
             
-        }
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
+        } 
+    }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
-        // TODO add your handling code here:
-        String text=jTextField4.getText();
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+
+        if(!Character.isDigit(evt.getKeyChar()))
+        {
+            evt.consume();
+        }
         
-        if(text.contains(".com")&&text.contains("@"))
-        {
-            text=text+" ";
-            jLabel6.setText("True email");
-        }
-        else
-        {
-            text=text+" ";
-             jLabel6.setText("False email");
-        }
-    }//GEN-LAST:event_jTextField4KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyTyped
 
     /**
      * @param args the command line arguments
@@ -432,7 +455,6 @@ catch(Exception ex)
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
